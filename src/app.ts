@@ -6,7 +6,7 @@ import Axios from "axios";
 export class App {
   public message: string = "Hello World!";
   private weatherflowHttp: WeatherFlowHttpService;
-  private centigrade: number;
+  private res: WeatherFlowHttpResponse;
   private fahrenheit: number;
   constructor() {
     this.weatherflowHttp = new WeatherFlowHttpService(Axios);
@@ -16,17 +16,11 @@ export class App {
   }
 
   async fetchWeatherData() {
-    const res = await this.weatherflowHttp.getPorchWeather();
-    const obsArray = res.data.obs;
-    this.centigrade = obsArray[obsArray.length - 1][2];
-    this.fahrenheit = this.getFahrenheitFromCelsius(this.centigrade);
+    this.res = await this.weatherflowHttp.getPorchWeather();
+    this.fahrenheit = this.getFahrenheitFromCelsius(this.res.airTemperature);
   }
 
   getFahrenheitFromCelsius(celsius) {
-    return Math.floor(celsius * (9 / 5) + 32);
-  }
-
-  getCelsiusFromFahrenheit(fahrenheit) {
-    return Math.floor((fahrenheit - 32) * (5 / 9));
+    return celsius * (9 / 5) + 32;
   }
 }

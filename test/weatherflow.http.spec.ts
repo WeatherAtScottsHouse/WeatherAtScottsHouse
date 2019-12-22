@@ -1,4 +1,4 @@
-import { WeatherFlowHttpService } from "./weatherflow.http";
+import { WeatherFlowHttpService } from "../src/async/weatherflow.http";
 import Axios from "axios";
 
 describe("Weatherflow Http Service", () => {
@@ -11,7 +11,7 @@ describe("Weatherflow Http Service", () => {
   it("should get data", done => {
     const result = service.getPorchWeather();
     result.then(x => {
-      console.log(x.data);
+      console.log(x);
       done();
     });
   });

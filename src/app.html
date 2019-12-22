@@ -1,7 +1,20 @@
 <template>
-  <h1>${message}</h1>
-  <p>
-    Weather is: ${centigrade} degrees in centigrade, ${fahrenheit} degrees in
-    fahrenheit!
-  </p>
+  <div class="container-fluid center-div">
+    Air Temperature C&#176;: ${res.airTemperature}
+    <br />
+    Air Temperature F&#176;: ${fahrenheit}
+    <br />
+    Air Pressure mb: ${res.stationPressure}
+    <br />
+    Humidity: ${res.relativeHumidity}%
+    <br />
+    Lightning Strike Count: ${res.lightningStrikeCount} strikes
+    <br />
+    Average distance of lightning strikes: ${res.lightningStrikeAverageDistance}
+    Km away
+    <br />
+    Station battery voltage: ${res.battery}v
+    <br />
+    Report interval: ${res.reportInterval} mins
+  </div>
 </template>
