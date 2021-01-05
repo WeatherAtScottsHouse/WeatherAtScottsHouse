@@ -10,7 +10,7 @@
   "dependencies": {
     "aurelia-animator-css": "^1.0.4",
     "aurelia-bootstrapper": "^2.3.2",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "moment": "^2.24.0"
   },
   "devDependencies": {
