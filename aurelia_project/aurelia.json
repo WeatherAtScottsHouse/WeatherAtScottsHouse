@@ -23,8 +23,8 @@
   "platform": {
     "hmr": false,
     "open": false,
-    "port": 8080,
-    "host": "localhost",
+    "port": 8081,
+    "host": "0.0.0.0",
     "output": "dist"
   },
   "packageManager": "npm"
