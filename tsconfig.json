@@ -2,7 +2,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "module": "esnext",
-    "skipLibCheck": true,
     "typeRoots": [
       "./node_modules/@types"
     ],
@@ -21,9 +20,8 @@
     "allowJs": true
   },
   "include": [
-    "./src/**/*.ts",
-    "./test/**/*.ts",
-    "./types/**/*.d.ts"
+    "src",
+    "test"
   ],
   "atom": {
     "rewriteTsconfig": false
