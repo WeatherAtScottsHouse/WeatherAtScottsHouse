@@ -6,7 +6,7 @@ export interface WeatherFlowHttpResponse {
 }
 
 export class WeatherFlowHttpService {
-  private readonly API_URL = "https://apiforward.herokuapp.com/forward";
+  private readonly API_URL = "https://weather.linghome.net";
   private readonly SCOTTS_LAT = 34.0258744;
   private readonly SCOTTS_LON = -84.5374217;
   private readonly http: AxiosInstance;
@@ -15,7 +15,7 @@ export class WeatherFlowHttpService {
     this.http = axios;
   }
   async getPorchWeather(): Promise<WeatherFlowHttpResponse> {
-    const url = `${this.API_URL}?url=https://api.openweathermap.org/data/2.5/weather&appid=OPENWEATHERMAP_LOOKUP_APIKEY&lat=${this.SCOTTS_LAT}&lon=${this.SCOTTS_LON}&units=metric`;
+    const url = `${this.API_URL}?lat=${this.SCOTTS_LAT}&lon=${this.SCOTTS_LON}&units=metric`;
     const result = (await (await this.http.get(url)).data) as any;
 
     return {
