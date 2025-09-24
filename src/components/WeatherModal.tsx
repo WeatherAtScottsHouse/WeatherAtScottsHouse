@@ -1,0 +1,32 @@
+import React from 'react';
+
+interface WeatherModalProps {
+  weather: any;
+}
+
+const WeatherModal: React.FC<WeatherModalProps> = ({ weather }) => {
+  if (!weather) {
+    return null;
+  }
+
+  const { main, description, icon } = weather.weather[0];
+  const { temp, humidity } = weather.main;
+  const isSunny = main === 'Clear';
+  const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+
+  return (
+    <div className="absolute top-4 left-4 bg-white bg-opacity-80 dark:bg-gray-800 dark:bg-opacity-80 p-4 rounded-lg shadow-lg flex items-center text-gray-800 dark:text-white">
+      <div>
+        <h2 className="text-xl font-bold mb-2">Weather Details</h2>
+        <p>Temperature: {temp}°F</p>
+        <p>Humidity: {humidity}%</p>
+        <p>Condition: {main}</p>
+        <p>Description: {description}</p>
+        <p>Sunny: {isSunny ? 'Yes' : 'No'}</p>
+      </div>
+      <img src={iconUrl} alt={description} className="w-20 h-20" />
+    </div>
+  );
+};
+
+export default WeatherModal;

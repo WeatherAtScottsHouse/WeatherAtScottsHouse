@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes move-around {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(20px, 10px); }
+  50% { transform: translate(-10px, 20px); }
+  75% { transform: translate(10px, -20px); }
+  100% { transform: translate(0, 0); }
+}
+
+.animate-move-around {
+  animation: move-around 10s infinite;
+}
+
+@keyframes play-catch {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(100px, 0); }
+  100% { transform: translate(0, 0); }
+}
+
+.animate-play-catch {
+  animation: play-catch 5s infinite;
+}
+
+@keyframes sprinkler {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+
+.animate-sprinkler {
+  animation: sprinkler 2s infinite;
+}
