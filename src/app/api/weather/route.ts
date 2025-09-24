@@ -14,20 +14,20 @@ export async function GET() {
       },
       weather: [
         {
-          id: 800,
-          main: 'Clear',
-          description: 'clear sky',
-          icon: '01d',
+          id: 501,
+          main: 'Rain',
+          description: 'moderate rain',
+          icon: '10d',
         },
       ],
       base: 'stations',
       main: {
-        temp: 75,
-        feels_like: 74.25,
-        temp_min: 72.81,
-        temp_max: 77.86,
+        temp: 65,
+        feels_like: 64.25,
+        temp_min: 62.81,
+        temp_max: 67.86,
         pressure: 1021,
-        humidity: 50,
+        humidity: 80,
         sea_level: 1021,
         grnd_level: 910,
       },
@@ -37,8 +37,11 @@ export async function GET() {
         deg: 121,
         gust: 3.47,
       },
+      rain: {
+        '1h': 2.73,
+      },
       clouds: {
-        all: 1,
+        all: 83,
       },
       dt: 1726660758,
       sys: {

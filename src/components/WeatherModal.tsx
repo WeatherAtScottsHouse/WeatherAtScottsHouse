@@ -15,7 +15,7 @@ const WeatherModal: React.FC<WeatherModalProps> = ({ weather }) => {
   const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
   return (
-    <div className="absolute top-4 left-4 bg-white bg-opacity-80 dark:bg-gray-800 dark:bg-opacity-80 p-4 rounded-lg shadow-lg flex items-center text-gray-800 dark:text-white">
+    <div className="absolute top-4 left-4 bg-white bg-opacity-80 dark:bg-gray-800 dark:bg-opacity-80 p-4 rounded-lg shadow-lg flex items-center text-gray-800 dark:text-white z-50">
       <div>
         <h2 className="text-xl font-bold mb-2">Weather Details</h2>
         <p>Temperature: {temp}°F</p>
