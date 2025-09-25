@@ -114,30 +114,30 @@ const Scene: React.FC<SceneProps> = ({ weather }) => {
 
   return (
     <div className={`relative w-full h-screen overflow-hidden ${isRaining || isOvercast ? 'filter grayscale' : ''}`}>
-      {/* Sky */}
-      <div className="absolute top-0 left-0 w-full h-1/2 bg-blue-300"></div>
-      {/* Ground */}
-      <div className="absolute bottom-0 left-0 w-full h-1/2 bg-green-400"></div>
-      
       <WeatherModal weather={weather} />
+      <div className="scene-content">
+        {/* Sky */}
+        <div className="absolute top-0 left-0 w-full h-1/2 bg-blue-300"></div>
+        {/* Ground */}
+        <div className="absolute bottom-0 left-0 w-full h-1/2 bg-green-400"></div>
+        
+        {cloudPositions.map((pos, i) => (
+          <div key={i} style={{ top: pos.top, left: pos.left }} className="absolute z-10">
+            <RainCloud />
+          </div>
+        ))}
 
-      {cloudPositions.map((pos, i) => (
-        <div key={i} style={{ top: pos.top, left: pos.left }} className="absolute z-10">
-          <RainCloud />
+        {raindropPositions.map((pos, i) => (
+          <div key={i} style={{ top: pos.top, left: pos.left }} className="absolute z-30">
+            <Raindrop />
+          </div>
+        ))}
+        
+        <div className="absolute bottom-1/2 right-0 z-20">
+          <House />
         </div>
-      ))}
-
-      {raindropPositions.map((pos, i) => (
-        <div key={i} style={{ top: pos.top, left: pos.left }} className="absolute z-30">
-          <Raindrop />
-        </div>
-      ))}
-      
-      <div className="absolute bottom-1/2 right-0 z-20">
-        <House />
+        
       </div>
-      
-      {renderPeople()}
     </div>
   );
 };

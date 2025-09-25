@@ -65,3 +65,55 @@ body {
 .animate-fall {
   animation: fall 2s linear infinite;
 }
+
+/* Responsive styles for the weather modal */
+@media (max-width: 768px) and (orientation: portrait) {
+  .weather-modal {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 66.67%;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--foreground);
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .weather-text {
+    text-align: center;
+    font-size: 1.25rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .weather-modal {
+      background-color: rgba(10, 10, 10, 0.8);
+    }
+  }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .weather-modal {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background);
+    color: var(--foreground);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+  }
+  .weather-text {
+    text-align: left;
+    font-size: 1.5rem;
+  }
+  .weather-icon {
+    margin-left: 2rem;
+  }
+  .scene-content {
+    display: none;
+  }
+}
