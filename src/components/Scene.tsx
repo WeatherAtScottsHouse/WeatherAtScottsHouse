@@ -6,32 +6,13 @@ import RainCloud from './RainCloud';
 import Raindrop from './Raindrop';
 
 interface SceneProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   weather: any;
 }
 
 const Scene: React.FC<SceneProps> = ({ weather }) => {
   const [cloudPositions, setCloudPositions] = useState<{ top: string; left: string; }[]>([]);
   const [raindropPositions, setRaindropPositions] = useState<{ top: string; left: string; }[]>([]);
-
-  if (!weather) {
-    return null;
-  }
-
-  const { main, description } = weather.weather[0];
-  const { temp } = weather.main;
-  const { all: cloudiness } = weather.clouds;
-  const rainVolume = weather.rain ? weather.rain['1h'] : 0;
-
-  const isRaining = main === 'Rain';
-  const isOvercast = cloudiness > 50;
-  const isNice = main === 'Clear' && temp >= 60 && temp <= 80;
-  const isHot = main === 'Clear' && temp > 80;
-
-  const getRainTier = () => {
-    if (rainVolume < 2.5) return 'light';
-    if (rainVolume < 7.6) return 'medium';
-    return 'heavy';
-  };
 
   const getNumberOfClouds = () => {
     if (!isRaining) return 0;
@@ -68,7 +49,28 @@ const Scene: React.FC<SceneProps> = ({ weather }) => {
       });
     }
     setRaindropPositions(newRaindropPositions);
-  }, [weather]);
+  }, [weather, getNumberOfClouds, getNumberOfRaindrops]);
+
+  if (!weather) {
+    return null;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { main, description } = weather.weather[0];
+  const { temp } = weather.main;
+  const { all: cloudiness } = weather.clouds;
+  const rainVolume = weather.rain ? weather.rain['1h'] : 0;
+
+  const isRaining = main === 'Rain';
+  const isOvercast = cloudiness > 50;
+  const isNice = main === 'Clear' && temp >= 60 && temp <= 80;
+  const isHot = main === 'Clear' && temp > 80;
+
+  const getRainTier = () => {
+    if (rainVolume < 2.5) return 'light';
+    if (rainVolume < 7.6) return 'medium';
+    return 'heavy';
+  };
 
 
   const getAnimationClass = () => {
@@ -81,6 +83,7 @@ const Scene: React.FC<SceneProps> = ({ weather }) => {
     return 'animate-move-around';
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const renderPeople = () => {
     if (isRaining) {
       return null; // People are inside
@@ -120,7 +123,7 @@ const Scene: React.FC<SceneProps> = ({ weather }) => {
         <div className="absolute top-0 left-0 w-full h-1/2 bg-blue-300"></div>
         {/* Ground */}
         <div className="absolute bottom-0 left-0 w-full h-1/2 bg-green-400"></div>
-        
+
         {cloudPositions.map((pos, i) => (
           <div key={i} style={{ top: pos.top, left: pos.left }} className="absolute z-10">
             <RainCloud />
@@ -132,11 +135,11 @@ const Scene: React.FC<SceneProps> = ({ weather }) => {
             <Raindrop />
           </div>
         ))}
-        
+
         <div className="absolute bottom-1/2 right-0 z-20">
           <House />
         </div>
-        
+
       </div>
     </div>
   );

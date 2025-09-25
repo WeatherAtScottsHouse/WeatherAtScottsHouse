@@ -66,6 +66,7 @@ export async function GET() {
     const data = await response.json();
     return NextResponse.json(data);
   } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     return NextResponse.json({ error: 'Failed to fetch weather data' }, { status: 500 });
   }
 }

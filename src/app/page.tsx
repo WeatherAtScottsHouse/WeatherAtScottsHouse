@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Scene from '@/components/Scene';
 
 export default function Home() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [weather, setWeather] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -18,6 +19,7 @@ export default function Home() {
         }
         const data = await response.json();
         setWeather(data);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         setError(error.message);
       } finally {
